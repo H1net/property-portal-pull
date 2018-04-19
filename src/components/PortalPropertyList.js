@@ -11,20 +11,20 @@ class PortalPropertyList extends Component {
   componentDidMount() {
     let propertyId = 64326220;
     let apiURL = 'http://api.rightmove.co.uk/api/propertyDetails?propertyId=' + propertyId + '&apiApplication=IPAD';
-    fetch(apiURL)
-    .then(results => {
-      return results.json();
-    }).then(data => {
-      console.log(data);
-      let properties = data.results.map((property) => {
-        return(
-          <div key="{property.results}">
-            {/* {property.name} */}
-          </div>
-        )
-      })
-      this.setState(properties: properties);
-      console.log("state", this.state.properties);
+    console.log("apiURL", apiURL);
+    fetch(apiURL, {mode: 'no-cors'})
+    .then(results => results.json())
+    .then(data => {
+      // console.log(data);
+      // let properties = data.results.map((property) => {
+      //   return(
+      //     <div key="{property.results}">
+      //       {/* {property.name} */}
+      //     </div>
+      //   )
+      // })
+      // this.setState(properties: properties);
+      // console.log("state", this.state.properties);
     })
   }
 
