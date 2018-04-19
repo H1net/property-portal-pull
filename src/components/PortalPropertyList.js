@@ -23,6 +23,8 @@ class PortalPropertyList extends Component {
           </div>
         )
       })
+      this.setState(properties: properties);
+      console.log("state", this.state.properties);
     })
   }
 
