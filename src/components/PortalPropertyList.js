@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import request from 'request-promise-native';
+
 class PortalPropertyList extends Component {
   constructor() {
     super();
@@ -28,14 +30,25 @@ class PortalPropertyList extends Component {
     //   // console.log("state", this.state.properties);
     // })
 
-    fetch(apiURL, {credentials: 'include'}).then(function(response) {
-      if(response.ok) {
-        return response.json();
-      }
-      throw new Error('Network response was not ok.');
-    }).then(results => results.json()).catch(function(error) {
-      console.log('There has been a problem with your fetch operation: ', error.message);
-    });
+    // fetch(apiURL, {credentials: 'include'}).then(function(response) {
+    //   if(response.ok) {
+    //     return response.json();
+    //   }
+    //   throw new Error('Network response was not ok.');
+    // }).then(results => results.json()).catch(function(error) {
+    //   console.log('There has been a problem with your fetch operation: ', error.message);
+    // });
+
+    let req = apiURL;
+    request(req)
+      .then(function (res) {
+          try {
+              JSON.parse(res)
+          } catch (e) {
+              
+          }
+      })
+      .catch();
   }
 
   render () {
